@@ -9,6 +9,9 @@ import java.util.List;
 @Builder
 public record HotelFilter(
 
+        @Schema(name = "name", example = "DoubleTree by Hilton Minsk")
+        String name,
+
         @Schema(name = "brand", example = "Hilton")
         String brand,
 

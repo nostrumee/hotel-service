@@ -19,6 +19,13 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class HotelSpecifications {
 
+    public static Specification<Hotel> byName(String name) {
+        return name == null
+                ? Specification.where(null)
+                : (root, query, builder) ->
+                builder.like(builder.lower(root.get(Hotel_.name)), "%" + name.toLowerCase() + "%");
+    }
+
     public static Specification<Hotel> byBrand(String brand) {
         return brand == null
                 ? Specification.where(null)

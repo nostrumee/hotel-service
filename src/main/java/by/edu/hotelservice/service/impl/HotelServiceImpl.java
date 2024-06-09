@@ -82,7 +82,8 @@ public class HotelServiceImpl implements HotelService {
     public List<HotelShortResponse> searchHotels(HotelFilter filter) {
         log.info("Searching hotels according to the filter: {}", filter);
 
-        Specification<Hotel> spec = byBrand(filter.brand())
+        Specification<Hotel> spec = byName(filter.name())
+                .and(byBrand(filter.brand()))
                 .and(byCity(filter.city()))
                 .and(byCountry(filter.country()))
                 .and(byAmenities(filter.amenities()));
