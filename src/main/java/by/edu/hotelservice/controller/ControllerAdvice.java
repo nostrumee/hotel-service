@@ -32,9 +32,9 @@ public class ControllerAdvice {
 
     @ExceptionHandler(GroupingParamNotSupportedException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse handleGroupingParamNotSupported(HotelNotFoundException e) {
+    public ErrorResponse handleGroupingParamNotSupported(GroupingParamNotSupportedException e) {
         return ErrorResponse.builder()
-                .status(HttpStatus.NOT_FOUND.value())
+                .status(HttpStatus.BAD_REQUEST.value())
                 .message(e.getMessage())
                 .build();
     }
