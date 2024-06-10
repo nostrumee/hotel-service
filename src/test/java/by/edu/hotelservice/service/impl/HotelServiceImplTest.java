@@ -93,9 +93,9 @@ public class HotelServiceImplTest {
     }
 
     @Test
-    void createHotel_shouldReturnHotelResponse() {
+    void createHotel_shouldReturnHotelShortResponse() {
         // arrange
-        var expected = getDefaultHotelResponse();
+        var expected = getHotelShortResponse(DEFAULT_ID);
         var hotel = getHotel(DEFAULT_ID, DEFAULT_BRAND);
         var createRequest = getHotelCreateRequest();
 
@@ -107,7 +107,7 @@ public class HotelServiceImplTest {
                 .save(hotel);
         doReturn(expected)
                 .when(hotelMapper)
-                .fromEntityToResponse(hotel);
+                .fromEntityToShortResponse(hotel);
 
         // act
         var actual = hotelService.createHotel(createRequest);
@@ -118,7 +118,7 @@ public class HotelServiceImplTest {
         verify(hotelRepository).save(hotel);
 
         verify(hotelMapper).fromCreateRequestToEntity(createRequest);
-        verify(hotelMapper).fromEntityToResponse(hotel);
+        verify(hotelMapper).fromEntityToShortResponse(hotel);
     }
 
     @Test
