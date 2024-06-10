@@ -48,7 +48,7 @@ public interface DocumentedHotelController {
             @ApiResponse(
                     responseCode = "201", description = "Hotel created",
                     content = {
-                            @Content(schema = @Schema(implementation = HotelResponse.class))
+                            @Content(schema = @Schema(implementation = HotelShortResponse.class))
                     }),
             @ApiResponse(
                     responseCode = "400", description = "Invalid data provided",
