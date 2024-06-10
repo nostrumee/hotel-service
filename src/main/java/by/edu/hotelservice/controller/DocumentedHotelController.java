@@ -56,7 +56,7 @@ public interface DocumentedHotelController {
                             @Content(schema = @Schema(implementation = ErrorResponse.class))
                     })
     })
-    ResponseEntity<HotelResponse> createHotel(
+    ResponseEntity<HotelShortResponse> createHotel(
             HotelCreateRequest createRequest,
             UriComponentsBuilder uriComponentsBuilder
     );

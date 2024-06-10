@@ -37,11 +37,11 @@ public class HotelController implements DocumentedHotelController {
     }
 
     @PostMapping("/hotels")
-    public ResponseEntity<HotelResponse> createHotel(
+    public ResponseEntity<HotelShortResponse> createHotel(
             @RequestBody @Valid HotelCreateRequest createRequest,
             UriComponentsBuilder uriComponentsBuilder
     ) {
-        HotelResponse response = hotelService.createHotel(createRequest);
+        HotelShortResponse response = hotelService.createHotel(createRequest);
         long hotelId = response.id();
 
         URI location = uriComponentsBuilder

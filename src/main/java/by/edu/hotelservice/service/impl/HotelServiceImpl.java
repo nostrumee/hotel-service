@@ -53,13 +53,13 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     @Transactional
-    public HotelResponse createHotel(HotelCreateRequest createRequest) {
+    public HotelShortResponse createHotel(HotelCreateRequest createRequest) {
         log.info("Creating a hotel from request {}", createRequest);
 
         Hotel hotelToSave = hotelMapper.fromCreateRequestToEntity(createRequest);
         Hotel savedHotel = hotelRepository.save(hotelToSave);
 
-        return hotelMapper.fromEntityToResponse(savedHotel);
+        return hotelMapper.fromEntityToShortResponse(savedHotel);
     }
 
     @Override

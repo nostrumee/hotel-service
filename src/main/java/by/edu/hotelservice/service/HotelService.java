@@ -14,7 +14,7 @@ public interface HotelService {
 
     List<HotelShortResponse> getAllHotels();
 
-    HotelResponse createHotel(HotelCreateRequest createRequest);
+    HotelShortResponse createHotel(HotelCreateRequest createRequest);
 
     void addAmenitiesToHotel(long hotelId, List<String> amenities);
 
