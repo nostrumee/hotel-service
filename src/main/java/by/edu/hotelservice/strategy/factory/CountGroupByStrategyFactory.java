@@ -7,29 +7,24 @@ import by.edu.hotelservice.strategy.impl.CountGroupByAmenitiesStrategy;
 import by.edu.hotelservice.strategy.impl.CountGroupByBrandStrategy;
 import by.edu.hotelservice.strategy.impl.CountGroupByCityStrategy;
 import by.edu.hotelservice.strategy.impl.CountGroupByCountryStrategy;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
 @Component
+@RequiredArgsConstructor
 public class CountGroupByStrategyFactory {
 
     private final Map<String, CountGroupByStrategy> strategies;
 
-    public CountGroupByStrategyFactory(HotelRepository hotelRepository) {
-        strategies = Map.of(
-                "brand", new CountGroupByBrandStrategy(hotelRepository),
-                "city", new CountGroupByCityStrategy(hotelRepository),
-                "country", new CountGroupByCountryStrategy(hotelRepository),
-                "amenities", new CountGroupByAmenitiesStrategy(hotelRepository)
-        );
-    }
-
     public CountGroupByStrategy getStrategy(String groupingParam) {
-        if (strategies.containsKey(groupingParam)) {
-            return strategies.get(groupingParam);
-        } else {
+        var strategy = strategies.get(groupingParam);
+
+        if (strategy == null) {
             throw new GroupingParamNotSupportedException(groupingParam);
         }
+
+        return strategy;
     }
 }

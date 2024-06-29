@@ -4,11 +4,13 @@ import by.edu.hotelservice.persistence.projection.HistogramInfo;
 import by.edu.hotelservice.persistence.repository.HotelRepository;
 import by.edu.hotelservice.strategy.CountGroupByStrategy;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
+@Component("country")
 public class CountGroupByCountryStrategy implements CountGroupByStrategy {
 
     private final HotelRepository hotelRepository;

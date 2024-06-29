@@ -98,7 +98,7 @@ public class HotelServiceImpl implements HotelService {
     public Map<String, Long> getHistogramInfo(String groupingParam) {
         log.info("Fetching histogram info by param: {}", groupingParam);
 
-        CountGroupByStrategy strategy = strategyFactory.getStrategy(groupingParam);
+        var strategy = strategyFactory.getStrategy(groupingParam);
 
         return strategy.getHistogramInfo();
     }
